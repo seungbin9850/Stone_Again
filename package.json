@@ -1,0 +1,28 @@
+{
+  "name": "stone_again",
+  "version": "1.0.0",
+  "description": "망한 돌멩이 다시 만들기",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seungbin9850/Stone_Again.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seungbin9850/Stone_Again/issues"
+  },
+  "homepage": "https://github.com/seungbin9850/Stone_Again#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.5"
+  }
+}
