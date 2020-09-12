@@ -12,6 +12,11 @@ app.use(express.json());
 app.use(logger("dev"));
 app.use(cors());
 
+app.use("/", require("./routes"));
+
+app.set("jwt-secret", process.env.JWT_SECRET);
+app.set("refresh-secret", process.env.REFRESH_SECRET);
+
 sequelize.sync();
 
 app.listen(3000, () => {
