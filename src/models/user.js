@@ -1,16 +1,15 @@
-const { sequelize } = require(".");
-
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define("user", {
-    name: {
-      type: DataTypes.STRING(20),
-    },
     userId: {
       type: DataTypes.STRING(100),
       unique: true,
+      primaryKey: true,
     },
     password: {
       type: DataTypes.STRING(100),
+    },
+    name: {
+      type: DataTypes.STRING(20),
     },
     frist: {
       type: DataTypes.BOOLEAN,
