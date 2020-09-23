@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/seungbin9850/Stone_Again#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
