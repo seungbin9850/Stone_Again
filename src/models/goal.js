@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    do: {
+    todo: {
       type: DataTypes.STRING(255),
     },
     deadline: {
