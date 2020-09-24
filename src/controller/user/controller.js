@@ -27,7 +27,14 @@ const login = async (req, res, next) => {
   }
 };
 
+const refresh = async (req, res, next) => {
+  const user = await query.findOneByUserId(req.decoded.userId);
+  const accessToken = await mkToken.mkAccess(req, user);
+  res.status(200).json({ accessToken });
+};
+
 module.exports = {
   register,
   login,
+  refresh,
 };
