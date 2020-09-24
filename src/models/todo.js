@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define("todo", {
-    do: {
+    todo: {
       type: DataTypes.STRING(255),
     },
     delete: {
