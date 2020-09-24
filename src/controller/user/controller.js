@@ -21,7 +21,7 @@ const login = async (req, res, next) => {
       throw new Error("존재하지 않는 유저");
     const accessToken = await mkToken.mkAccess(req, user);
     const refreshToken = await mkToken.mkRefresh(req, user);
-    res.status(200).json({ accessToken, refreshToken }).end();
+    res.status(200).json({ accessToken, refreshToken });
   } catch (e) {
     res.status(404).end();
   }
