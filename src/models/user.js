@@ -15,5 +15,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
+    hour: {
+      type: DataTypes.INTEGER,
+    },
+    minute: {
+      type: DataTypes.INTEGER,
+    },
   });
 };
