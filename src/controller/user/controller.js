@@ -17,14 +17,15 @@ const login = async (req, res, next) => {
   const { userId, password } = req.body;
   try {
     const user = await query.findOneByUserId(userId);
+    if (!user) throw new Error("존재하지 않는 유저");
     if (!(await query.passwordCompare(password, user.password)))
-      throw new Error("존재하지 않는 유저");
+      res.status(409).end();
     const accessToken = await mkToken.mkAccess(req, user);
     const refreshToken = await mkToken.mkRefresh(req, user);
     if (user.first) {
-      res.status(201).json({ accessToken, refreshToken });
       user.first = false;
       await user.save();
+      res.status(201).json({ accessToken, refreshToken });
     }
     res.status(200).json({ accessToken, refreshToken });
   } catch (e) {
