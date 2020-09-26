@@ -5,7 +5,7 @@ const setGoal = async (req, res, next) => {
   try {
     await Goal.create({ todo, deadline, userId });
     await Stone.create({ userId, left });
-    const user = User.findOne({ userId });
+    const user = await User.findOne({ where: { userId } });
     user.time = time;
     await user.save();
     res.status(200).end();
