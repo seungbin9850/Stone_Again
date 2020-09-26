@@ -6,8 +6,7 @@ const mkAccess = async (req, user) => {
     {
       userId: user.userId,
       name: user.name,
-      hour: user.hour,
-      minute: user.minute,
+      time: user.time,
     },
     secret,
     {
@@ -23,8 +22,7 @@ const mkRefresh = async (req, user) => {
     {
       userId: user.userId,
       name: user.name,
-      hour: user.hour,
-      minute: user.minute,
+      time: user.time,
     },
     secret,
     {
