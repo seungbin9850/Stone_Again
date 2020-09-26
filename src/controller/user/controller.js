@@ -22,7 +22,7 @@ const login = async (req, res, next) => {
       res.status(409).end();
     const accessToken = await mkToken.mkAccess(req, user);
     const refreshToken = await mkToken.mkRefresh(req, user);
-    if (user.first) {
+    if (user.first === true) {
       user.first = false;
       await user.save();
       res.status(201).json({ accessToken, refreshToken });
