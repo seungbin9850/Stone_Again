@@ -17,9 +17,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     hour: {
       type: DataTypes.INTEGER,
+      defaultValue: 24,
     },
     minute: {
       type: DataTypes.INTEGER,
+      defaultValue: 00,
     },
   });
 };
