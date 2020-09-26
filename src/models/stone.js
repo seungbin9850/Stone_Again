@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
+    left: {
+      type: DataTypes.INTEGER,
+    },
     userId: {
       type: DataTypes.STRING(100),
     },
