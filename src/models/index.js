@@ -16,6 +16,7 @@ db.User = require("./user")(sequelize, Sequelize);
 db.Todo = require("./todo")(sequelize, Sequelize);
 db.Goal = require("./goal")(sequelize, Sequelize);
 db.Stone = require("./stone")(sequelize, Sequelize);
+db.Phrase = require("./phrase")(sequelize, Sequelize);
 
 db.User.hasOne(db.Goal, { foreignKey: "userId", targetKey: "userId" });
 db.Goal.belongsTo(db.User, { foreignKey: "userId" });
