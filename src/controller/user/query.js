@@ -6,7 +6,12 @@ const passwordEncoding = async (password) => {
 };
 
 const findOneByUserId = async (userId) => {
-  return await User.findOne({ where: { userId } });
+  try {
+    const user = await User.findOne({ where: { userId } });
+    return user;
+  } catch (e) {
+    throw e;
+  }
 };
 
 const passwordCompare = async (password, encoded) => {
