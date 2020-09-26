@@ -14,7 +14,7 @@ const showAll = async (userId) => {
         },
       ],
       where: { userId },
-      attributes: ["name", "hour", "minute"],
+      attributes: ["name", "time"],
     });
     return main;
   } catch (e) {

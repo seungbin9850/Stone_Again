@@ -9,10 +9,9 @@ const showMain = async (req, res, next) => {
       order: sequelize.random(),
       attributes: ["name", "word"],
     });
-    console.log(phrase);
     res.status(200).json({ main, phrase });
   } catch (e) {
-    res.status(400);
+    res.status(400).end();
   }
 };
 
