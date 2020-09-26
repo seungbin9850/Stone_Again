@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING(20),
     },
-    frist: {
+    first: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
