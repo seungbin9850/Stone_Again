@@ -15,13 +15,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
-    hour: {
-      type: DataTypes.INTEGER,
-      defaultValue: 24,
-    },
-    minute: {
-      type: DataTypes.INTEGER,
-      defaultValue: 00,
+    time: {
+      type: DataTypes.STRING(30),
+      defaultValue: "24:00",
     },
   });
 };

@@ -1,13 +1,12 @@
 const { Goal, Stone, User } = require("../../models");
 const setGoal = async (req, res, next) => {
-  const { todo, deadline, hour, minute, left } = req.body;
+  const { todo, deadline, time, left } = req.body;
   const userId = req.decoded.userId;
   try {
     await Goal.create({ todo, deadline, userId });
     await Stone.create({ userId, left });
     const user = User.findOne({ userId });
-    user.hour = hour;
-    user.minute = minute;
+    user.time = time;
     await user.save();
     res.status(200).end();
   } catch (e) {
