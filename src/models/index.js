@@ -18,6 +18,7 @@ db.Goal = require("./goal")(sequelize, Sequelize);
 db.Stone = require("./stone")(sequelize, Sequelize);
 db.Phrase = require("./phrase")(sequelize, Sequelize);
 db.Diary = require("./diary")(sequelize, Sequelize);
+db.Check = require("./check")(sequelize, Sequelize);
 
 db.User.hasOne(db.Goal, { foreignKey: "userId", targetKey: "userId" });
 db.Goal.belongsTo(db.User, { foreignKey: "userId" });
@@ -27,5 +28,7 @@ db.User.hasOne(db.Stone, { foreignKey: "userId", targetKey: "userId" });
 db.Stone.belongsTo(db.User, { foreignKey: "userId" });
 db.User.hasOne(db.Diary, { foreignKey: "userId", targetKey: "userId" });
 db.Diary.belongsTo(db.User, { foreignKey: "userId" });
+db.User.hasMany(db.Check, { foreignKey: "userId", targetKey: "userId" });
+db.Check.belongsTo(db.User, { foreignKey: "userId" });
 
 module.exports = db;
