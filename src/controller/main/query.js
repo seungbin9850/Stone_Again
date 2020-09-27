@@ -1,6 +1,6 @@
 const { User, Todo, Stone, Phrase } = require("../../models");
 
-const showAll = async (userId) => {
+const showAll = async (userId, time) => {
   try {
     const main = await User.findOne({
       include: [
