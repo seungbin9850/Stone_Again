@@ -4,5 +4,6 @@ const auth = require("../middlewares/auth");
 
 router.post("/diary", auth.authMiddleware, controller.writeDiary);
 router.get("/", auth.authMiddleware, controller.showProfile);
+router.put("/time", auth.authMiddleware, controller.setTime);
 
 module.exports = router;

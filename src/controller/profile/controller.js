@@ -1,4 +1,4 @@
-const { Diary } = require("../../models");
+const { Diary, User } = require("../../models");
 const query = require("./query");
 
 const writeDiary = async (req, res, next) => {
@@ -25,7 +25,21 @@ const showProfile = async (req, res, next) => {
   }
 };
 
+const setTime = async (req, res, next) => {
+  const time = req.body.time;
+  const userId = req.decoded.userId;
+  try {
+    const user = await User.findOne({ where: { userId } });
+    user.time = time;
+    await user.save();
+    res.status(200).end();
+  } catch (e) {
+    res.status(400).end();
+  }
+};
+
 module.exports = {
   writeDiary,
   showProfile,
+  setTime,
 };
