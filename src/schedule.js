@@ -1,0 +1,16 @@
+const schedule = require("node-schedule");
+const { Todo, Diary } = require("./models");
+
+const interval = schedule.scheduleJob("20 * * * * *", async () => {
+  try {
+    await Todo.destroy({ where: {}, truncate: true });
+    await Diary.destroy({ where: {}, truncate: true });
+    console.log("삭제됨");
+  } catch (e) {
+    console.log(e.message);
+  }
+});
+
+module.exports = {
+  interval,
+};
