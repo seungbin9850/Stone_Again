@@ -16,9 +16,13 @@ const setTodo = async (req, res, next) => {
 
 const successTodo = async (req, res, next) => {
   const userId = req.decoded.userId;
+  const time = req.body.time;
   try {
-    const todo = await Todo.findAll({ where: { userId } });
-    if (todo.length === 0) throw new Error("투두가 없음");
+    const todo = await Todo.findOne({ where: { userId } });
+    if (todo.time < time) {
+      res.status(201).end();
+    }
+    if (!todo) throw new Error("투두가 없음");
     await Todo.destroy({ where: { userId } });
     const stone = await Stone.findOne({ where: { userId } });
     stone.exp += Math.floor(500 / stone.left);
