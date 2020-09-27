@@ -25,7 +25,11 @@ const successTodo = async (req, res, next) => {
     }
     if (!todo) throw new Error("투두가 없음");
     await Todo.destroy({ where: { userId } });
-    const check = await Check.findOne({ where: { userId } });
+    const check = await Check.findOne({
+      where: { userId },
+      order: [["createdAt", "DESC"]],
+    });
+    console.log(check);
     check.check = true;
     await check.save();
     const stone = await Stone.findOne({ where: { userId } });
@@ -37,7 +41,7 @@ const successTodo = async (req, res, next) => {
     await stone.save();
     res.status(200).end();
   } catch (e) {
-    res.status(400).end();
+    res.status(400).send(e.message);
   }
 };
 
