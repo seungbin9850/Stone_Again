@@ -17,14 +17,14 @@ const setTodo = async (req, res, next) => {
 
 const successTodo = async (req, res, next) => {
   const userId = req.decoded.userId;
+  const userTime = req.decoded.time;
   const time = req.body.time;
   try {
     const todo = await Todo.findOne({ where: { userId } });
-    if (todo.time < time) {
+    if (userTime < time) {
       res.status(201).end();
     }
     if (!todo) throw new Error("투두가 없음");
-    await Todo.destroy({ where: { userId } });
     const check = await Check.findOne({
       where: { userId },
       order: [["createdAt", "DESC"]],

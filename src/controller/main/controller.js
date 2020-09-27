@@ -3,6 +3,7 @@ const query = require("./query");
 
 const showMain = async (req, res, next) => {
   const userId = req.decoded.userId;
+
   try {
     const main = await query.showAll(userId);
     const phrase = await Phrase.findOne({
