@@ -6,7 +6,7 @@ const setTodo = async (req, res, next) => {
   const time = req.decoded.time;
   try {
     const todo = await Todo.findAll({ where: { userId } });
-    if (todo) throw new Error("이미 투두가 있음");
+    if (todo.length) throw new Error("이미 투두가 있음");
     for (let todo of todoArr) {
       await Todo.create({ todo, delete: time, userId });
     }
