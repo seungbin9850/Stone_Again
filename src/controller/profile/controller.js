@@ -1,4 +1,5 @@
 const { Diary } = require("../../models");
+const query = require("./query");
 
 const writeDiary = async (req, res, next) => {
   const content = req.body.content;
@@ -10,10 +11,21 @@ const writeDiary = async (req, res, next) => {
     await diary.save();
     res.status(200).end();
   } catch (e) {
+    res.status(400).send(e.message);
+  }
+};
+
+const showProfile = async (req, res, next) => {
+  const userId = req.decoded.userId;
+  try {
+    const profile = await query.showProfile(userId);
+    res.status(200).json(profile);
+  } catch (e) {
     res.status(400).end();
   }
 };
 
 module.exports = {
   writeDiary,
+  showProfile,
 };

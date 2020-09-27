@@ -1,4 +1,4 @@
-const { Todo, Stone } = require("../../models");
+const { Todo, Stone, Check } = require("../../models");
 
 const setTodo = async (req, res, next) => {
   const todoArr = req.body.todo;
@@ -8,6 +8,7 @@ const setTodo = async (req, res, next) => {
     for (let todo of todoArr) {
       await Todo.create({ todo, delete: time, userId });
     }
+    await Check.create({ userId });
     res.status(200).end();
   } catch (e) {
     res.status(409).end();
@@ -24,6 +25,8 @@ const successTodo = async (req, res, next) => {
     }
     if (!todo) throw new Error("투두가 없음");
     await Todo.destroy({ where: { userId } });
+    const check = await Check.findOne({ where: { userId } });
+    check.check = true;
     const stone = await Stone.findOne({ where: { userId } });
     stone.exp += Math.floor(500 / stone.left);
     if (stone.exp >= 100) {

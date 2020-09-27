@@ -3,5 +3,6 @@ const controller = require("../controller/profile/controller");
 const auth = require("../middlewares/auth");
 
 router.post("/diary", auth.authMiddleware, controller.writeDiary);
+router.get("/", auth.authMiddleware, controller.showProfile);
 
 module.exports = router;
