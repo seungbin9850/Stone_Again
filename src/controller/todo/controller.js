@@ -27,6 +27,7 @@ const successTodo = async (req, res, next) => {
     await Todo.destroy({ where: { userId } });
     const check = await Check.findOne({ where: { userId } });
     check.check = true;
+    await check.save();
     const stone = await Stone.findOne({ where: { userId } });
     stone.exp += Math.floor(500 / stone.left);
     if (stone.exp >= 100) {
