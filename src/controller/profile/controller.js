@@ -38,8 +38,19 @@ const setTime = async (req, res, next) => {
   }
 };
 
+const showStone = async (req, res, next) => {
+  const userId = req.decoded.userId;
+  try {
+    const stone = await Stone.findOne({ where: { userId } });
+    res.status(200).json({ stone });
+  } catch (e) {
+    res.status(400).end();
+  }
+};
+
 module.exports = {
   writeDiary,
   showProfile,
   setTime,
+  showStone,
 };
