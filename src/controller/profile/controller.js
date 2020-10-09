@@ -1,4 +1,4 @@
-const { Diary, User } = require("../../models");
+const { Diary, User, Stone } = require("../../models");
 const query = require("./query");
 
 const writeDiary = async (req, res, next) => {
@@ -44,7 +44,7 @@ const showStone = async (req, res, next) => {
     const stone = await Stone.findOne({ where: { userId } });
     res.status(200).json({ stone });
   } catch (e) {
-    res.status(400).end();
+    res.status(400).send(e.message);
   }
 };
 
