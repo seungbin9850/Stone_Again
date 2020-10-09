@@ -41,8 +41,14 @@ const setTime = async (req, res, next) => {
 const showStone = async (req, res, next) => {
   const userId = req.decoded.userId;
   try {
-    const stone = await Stone.findOne({ where: { userId } });
-    const encyclopedia = await Encyclopedia.findAll({ where: { userId } });
+    const stone = await Stone.findOne({
+      where: { userId },
+      attributes: ["level", "exp"],
+    });
+    const encyclopedia = await Encyclopedia.findAll({
+      where: { userId },
+      attributes: ["level", "goal", "date"],
+    });
     res.status(200).json({ stone, encyclopedia });
   } catch (e) {
     res.status(400).send(e.message);

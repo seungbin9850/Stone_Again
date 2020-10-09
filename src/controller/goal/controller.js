@@ -1,4 +1,4 @@
-const { Goal, Stone, User, Encyclopedia } = require("../../models");
+const { Goal, Stone, User, Encyclopedia, Todo } = require("../../models");
 
 const setGoal = async (req, res, next) => {
   const { todo, deadline, time, left } = req.body;
@@ -20,9 +20,10 @@ const successGoal = async (req, res, next) => {
   const userId = req.decoded.userId;
   try {
     const goal = await Goal.findOne({ where: { userId } });
-    if (goal.deadline > today) {
+    if (goal.deadline < today) {
       await goal.destroy();
       await stone.destroy();
+      await Todo.destroy({ where: { userId } });
       res.status(201).end();
     }
     const stone = await Stone.findOne({ where: { userId } });
@@ -34,8 +35,10 @@ const successGoal = async (req, res, next) => {
     });
     await goal.destroy();
     await stone.destroy();
+    await Todo.destroy({ where: { userId } });
     res.status(200).end();
   } catch (e) {
+    console.log(e.message);
     res.status(400).end();
   }
 };
