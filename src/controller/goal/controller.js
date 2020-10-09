@@ -22,7 +22,7 @@ const successGoal = async (req, res, next) => {
     const goal = await Goal.findOne({ where: { userId } });
     if (goal.deadline < today) {
       await goal.destroy();
-      await stone.destroy();
+      await Stone.destroy({ where: { userId } });
       await Todo.destroy({ where: { userId } });
       res.status(201).end();
     }
@@ -34,11 +34,10 @@ const successGoal = async (req, res, next) => {
       date: today,
     });
     await goal.destroy();
-    await stone.destroy();
+    await Stone.destroy({ where: { userId } });
     await Todo.destroy({ where: { userId } });
     res.status(200).end();
   } catch (e) {
-    console.log(e.message);
     res.status(400).end();
   }
 };
