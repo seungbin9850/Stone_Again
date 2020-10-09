@@ -1,10 +1,16 @@
-const { Todo, Stone, Check } = require("../../models");
+const { Todo, Stone, Check, Goal } = require("../../models");
 
 const setTodo = async (req, res, next) => {
   const todoArr = req.body.todo;
   const userId = req.decoded.userId;
   const time = req.decoded.time;
+  const today = req.body.today;
   try {
+    const goal = await Goal.findOne({ where: { userId } });
+    const deadline = goal.deadline;
+    if (deadline > today) {
+      res.status(201).end();
+    }
     const todo = await Todo.findAll({ where: { userId } });
     if (todo.length) throw new Error("이미 투두가 있음");
     for (let todo of todoArr) {
