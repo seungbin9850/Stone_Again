@@ -19,14 +19,15 @@ const successGoal = async (req, res, next) => {
   const today = req.body.today;
   const userId = req.decoded.userId;
   try {
+    const stone = await Stone.findOne({ where: { userId } });
+    if (!stone) res.status(202).end();
     const goal = await Goal.findOne({ where: { userId } });
     if (goal.deadline < today) {
       await goal.destroy();
-      await Stone.destroy({ where: { userId } });
+      await stone.destroy();
       await Todo.destroy({ where: { userId } });
       res.status(201).end();
     }
-    const stone = await Stone.findOne({ where: { userId } });
     await Encyclopedia.create({
       userId,
       level: stone.level,
@@ -34,7 +35,7 @@ const successGoal = async (req, res, next) => {
       date: today,
     });
     await goal.destroy();
-    await Stone.destroy({ where: { userId } });
+    await stone.destroy();
     await Todo.destroy({ where: { userId } });
     res.status(200).end();
   } catch (e) {
