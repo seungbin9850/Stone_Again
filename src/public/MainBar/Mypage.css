@@ -1,0 +1,261 @@
+html,
+body {
+  background-color: #ececec;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100vh;
+}
+
+.head {
+  height: 100px;
+  padding: 20px 0px 0px 40px;
+  display: flex;
+}
+.headTitle {
+  display: flex;
+}
+#smallStones {
+  padding-top: 17px;
+  width: 30px;
+  height: 30px;
+  padding-right: 30px;
+}
+.title {
+  height: 50px;
+  font-weight: 600;
+  font-size: 40px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.smallTitle {
+  display: flex;
+  flex-direction: column-reverse;
+  height: 45px;
+}
+.headTail {
+  display: flex;
+  padding-top: 27px;
+  margin-left: 550px;
+  font-weight: 600;
+}
+.headTail > div:nth-child(2) {
+  height: 25px;
+  margin: 0px 120px;
+  border-bottom: 1px solid #5d5f9b;
+
+  color: #5d5f9b;
+  border-radius: solid;
+  padding: 0;
+}
+
+.headTail > div:nth-child(3) {
+  margin-left: -20px;
+  height: 30px;
+  border-radius: 1rem;
+  border: 1px solid black;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.body {
+  padding: 0 40px 0 40px;
+  width: 100vw;
+  height: 300px;
+  display: flex;
+}
+.goal{
+  padding-bottom: 40px;
+  font-size: 20px;
+}
+.goalContainer {
+  background-color: #5d5f9b;
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+.goalContainer > div {
+  padding-left: 100px;
+  color: white;
+}
+.termBox {
+  display: flex;
+}
+
+.timeBox {
+  height: 50%;
+  display: flex;
+  margin: 0 auto;
+  flex: 1;
+  justify-content: space-around;
+}
+.timeBox > input {
+  color: #5d5f9b;
+  width: 62px;
+  font-size: 51px;
+  padding-top: 35px;
+  height: 58px;
+  border: none;
+  outline: none;
+  text-align: center;
+  border-bottom: 1px solid #5d5f9b;
+}
+.time {
+  transform: translate(50px, 0px);
+}
+.minutes {
+  transform: translate(-50px, 0px);
+}
+/* .timeBox>input:nth-child(1){
+  margin-left: 100px;
+}
+.timeBox>input:nth-child(2){
+  margin-right: 100px;
+} */
+.comma {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 700;
+  color: #5d5f9b;
+  padding-top: 35px;
+}
+
+.ClockImg {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  height: 100%;
+  padding-top: 20px;
+  padding-left: 100px;
+}
+.userName {
+  padding-top: 60px;
+  color: white;
+  font-size: 30px;
+  display: flex;
+  padding-bottom: 40px;
+}
+.tail {
+  width: 100vw;
+  height: 50%;
+  flex: 3;
+  display: flex;
+  padding-right: 1px;
+}
+.tail > div {
+  flex: 1;
+  height: 250px;
+  background-color: white;
+  margin: 20px 40px;
+}
+.ItemTitle {
+  height: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+.diary {
+  display: block;
+  resize: none;
+  width: 90%;
+  height: 70%;
+  margin: 0 auto;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+.submitDiary {
+  border: none;
+  width: 40%;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  margin: 0 auto;
+  background-color: #5d5f9b;
+  border: 1px solid;
+  border-radius: 1rem;
+}
+.innerBox {
+  height: 180px;
+}
+.leftColor {
+  background-color: #5d5f9b;
+  width: 70px;
+  height: 100%;
+}
+.weekCount {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+}
+.week {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 20px;
+}
+.week > div {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.CheckToDo.active {
+  background-color: #5d5f9b;
+}
+.headTail>div{
+  
+  cursor: pointer;
+}
+.goalContainer2{
+  flex:1;
+  height: 100%;
+
+}
+.successObj{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.successObjBtn{
+  margin-top: 30px;
+  background-color:#5d5f9b ;
+  border: white solid 3px;
+  color: white;
+  border-radius: 3px;
+  width: 40%;
+  height: 10%;
+  font-weight: bold;
+  outline:none;
+}
+.MakeNewObjBtn{
+  margin-top: 30px;
+  background-color:#5d5f9b ;
+  border: white solid 3px;
+  color: white;
+  border-radius: 3px;
+  width: 40%;
+  height: 10%;
+  font-weight: bold;
+  outline:none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
