@@ -41,7 +41,7 @@ const successTodo = async (req, res, next) => {
     check.check = true;
     await check.save();
     const stone = await Stone.findOne({ where: { userId } });
-    stone.exp += Math.floor(500 / stone.left);
+    stone.exp += Math.floor(400 / stone.left);
     if (stone.exp >= 100) {
       stone.level += stone.exp / 100;
       stone.exp -= (stone.level - 1) * 100;
